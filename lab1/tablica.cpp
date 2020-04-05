@@ -27,11 +27,11 @@ void kopiuj_zawartosc(int tab1[], int rozmiar1, int tab2[], int rozmiar2)
 {
 for(int i = 0; i < rozmiar1; i++)
 {
-if(i < rozmiar2) //kopiujemy dopoki rozmiar2 na to pozwoli(moze byc mniejsza)
+if(i < rozmiar2) 
 {
 tab2[i] = tab1[i];
 }
-else //jesli tab2 sie skonczyla to konczymy
+else 
 {
 break;
 }
