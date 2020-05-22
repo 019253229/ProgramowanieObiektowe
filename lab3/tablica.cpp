@@ -2,13 +2,7 @@
 #include "tablica.h"
 #include "Struktura_tablicy.h"
 
-/**
- *
- * @param[in,out] arr- tablica której rozmiar chcemy zmienić
- * @param[in] nowy_rozmiarX - nowy rozmiar X
- * @param[in] nowy_rozmiarY - nowy rozmiar Y
- * @return - kod błędu lub 0 w przypadku powodzenia
- */
+
 int zmien_rozmiar(Tablica* arr, int nowy_rozmiarX, int nowy_rozmiarY)
 {
 	if(nowy_rozmiarX <= 0 || nowy_rozmiarY <= 0)
@@ -19,28 +13,27 @@ int zmien_rozmiar(Tablica* arr, int nowy_rozmiarX, int nowy_rozmiarY)
 	int** nowa_tablica = new int*[MAX_Y];
 
     for(int i = 0; i < MAX_Y; i++)
+        {
         nowa_tablica[i] = new int[nowy_rozmiarX];
+        }
 
-    nowy_arr.tablica = nowa_tablica;
-    nowy_arr.rozmiarX = nowy_rozmiarX;
-    nowy_arr.rozmiarY = nowy_rozmiarY;
 
-	kopiuj_zawartosc(*arr, nowy_arr);
+        nowy_arr.tablica = nowa_tablica;
+        nowy_arr.rozmiarX = nowy_rozmiarX;
+        nowy_arr.rozmiarY = nowy_rozmiarY;
 
-	delete[] (*arr).tablica;
+        kopiuj_zawartosc(*arr, nowy_arr);
 
-    arr -> tablica = nowy_arr.tablica;
-    arr -> rozmiarX = nowy_arr.rozmiarX;
-    arr -> rozmiarY = nowy_arr.rozmiarY;
+        delete[] (*arr).tablica;
+
+        arr -> tablica = nowy_arr.tablica;
+        arr -> rozmiarX = nowy_arr.rozmiarX;
+        arr -> rozmiarY = nowy_arr.rozmiarY;
 
     return SUCCESS;
 }
 
-/**
- * Kopiujemy zawartosc z tablicy 1 do 2
- * @param[in] tab1 - tablica z której kopiowane są elementy
- * @param[in,out] tab2 - tablica do której kopiowane są elementy
- */
+
 int kopiuj_zawartosc(Tablica tab1, Tablica tab2)
 {
     for(int i = 0; i < tab1.rozmiarX; i++)
@@ -66,12 +59,7 @@ int kopiuj_zawartosc(Tablica tab1, Tablica tab2)
 	return SUCCESS;
 }
 
-/**
- *@param[in,out] arr - tablica w której chcemy zmienić wartosc
- *@param[in] indeksX - miejsce komorki na X
- *@param[in] indeksY - miejsce komorki na Y
- *@param[in] nowa_wartosc - wartosc na jaka zmieniamy
- */
+
 
 int aktualizuj_zawartosc(Tablica arr, int indeksX, int indeksY, int nowa_wartosc)
 {
@@ -84,11 +72,6 @@ int aktualizuj_zawartosc(Tablica arr, int indeksX, int indeksY, int nowa_wartosc
     return ERR_INVALID_SIZE;
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy policzyc sume w kolumnie
-*@param[in] kolumna - ilosc kolumn
-*@param[in,out] sumaY - suma w danej kolumnie
-*/
 
 
 int suma_kolumna(Tablica arr, int kolumna, int* sumaY)
@@ -109,12 +92,6 @@ int suma_kolumna(Tablica arr, int kolumna, int* sumaY)
     return SUCCESS;
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy policzyc sume w kolumnie
-*@param[in] wiersz - ilosc wierszy
-*@param[in,out] sumaX- suma w danym wierszu
-*/
-
 
 
 int suma_wiersz(Tablica arr, int wiersz, int* sumaX)
@@ -132,11 +109,7 @@ int suma_wiersz(Tablica arr, int wiersz, int* sumaX)
     return SUCCESS;
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy podac najmniejsza wartosc w wierszu
-*@param[in] wiersz - ilosc wierszy
-*@param[in,out] najmniejszaX - najmniejsza wartosc
-*/
+
 
 
 int minimumX(Tablica arr,int wiersz, int* najmniejszaX)
@@ -145,6 +118,7 @@ int minimumX(Tablica arr,int wiersz, int* najmniejszaX)
     {
         *najmniejszaX=0;
         for(int i=0; i<arr.rozmiarX; i++)
+
         {
             *najmniejszaX = arr.tablica[wiersz][i];
 
@@ -161,11 +135,7 @@ int minimumX(Tablica arr,int wiersz, int* najmniejszaX)
 
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy podac najmniejsza wartosc w kolumnie
-*@param[in] kolumna - ilosc kolumn
-*@param[in,out] najmniejszaY - najmniejsza wartosc
-*/
+
 
 
 int minimumY(Tablica arr,int kolumna, int* najmniejszaY)
@@ -175,6 +145,7 @@ int minimumY(Tablica arr,int kolumna, int* najmniejszaY)
         *najmniejszaY=0;
         for(int j=0; j<arr.rozmiarY; j++)
         {
+
             *najmniejszaY = arr.tablica[j][kolumna];
 
                 if(arr.tablica[j][kolumna] < *najmniejszaY)
@@ -190,12 +161,7 @@ int minimumY(Tablica arr,int kolumna, int* najmniejszaY)
 
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy podac najwieksza wartosc w wierszu
-*@param[in] wiersz - ilosc wierszy
-*@param[in,out] najwiekszaX - najwieksza wartosc
-* !!!Nie wiem czemu wyswietla najmniejsza wartosc!!!
-*/
+
 
 
 int maximumX(Tablica arr,int wiersz, int* najwiekszaX)
@@ -220,12 +186,7 @@ int maximumX(Tablica arr,int wiersz, int* najwiekszaX)
 
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy podac najwieksza wartosc w kolumnie
-*@param[in] kolumna - ilosc kolumn
-*@param[in,out] najwiekszaY - najwieksza wartosc
-* !!!Nie wiem czemu wyswietla najmniejsza wartosc!!!
-*/
+
 
 
 int maximumY(Tablica arr,int kolumna, int* najwiekszaY)
@@ -250,12 +211,7 @@ int maximumY(Tablica arr,int kolumna, int* najwiekszaY)
 
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy podac srednia wartosc w wierszu
-*@param[in] wiersz - ilosc wierszy
-*@param[in,out] sredniaX - srednia wartosc w wierszu (suma podzielona przez ilosc)
-*@param[in,out] sumaX - suma w danym wierszu
-*/
+
 
 
 int srednia_wiersz(Tablica arr, int wiersz, double* sredniaX, int* sumaX)
@@ -276,12 +232,7 @@ int srednia_wiersz(Tablica arr, int wiersz, double* sredniaX, int* sumaX)
     return SUCCESS;
 }
 
-/**
-*@param[in,out] arr - tablica w której chcemy podac srednia wartosc w kolumnie
-*@param[in] kolumna - ilosc kolumn
-*@param[in,out] sredniaY - srednia wartosc w kolumnie (suma podzielona przez ilosc)
-*@param[in,out] sumaY - suma w danej kolumnie
-*/
+
 
 
 int srednia_kolumna(Tablica arr, int kolumna,double* sredniaY, int* sumaY)
