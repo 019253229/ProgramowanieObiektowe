@@ -1,5 +1,5 @@
 #pragma once
-#include "Kolumna.hpp"
+#include "Kolumna.h"
 #include "Komorka.h"
 
 class KolumnaStr : public Kolumna
